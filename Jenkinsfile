@@ -2,10 +2,12 @@ pipeline {
   agent any
    environment {
     REGISTRY = 'registry.hub.docker.com'
-    REGISTRY_IMAGE = "$REGISTRY/mpruna/weather_app"
+    REGISTRY_IMAGE = "$REGISTRY/mpruna/dockerapp"
     DOCKERFILE_PATH = 'Dockerfile'
-    docker = '/usr/local/bin/docker'
-    REGISTRY_USER = credentials('registryUser')
+     
+    // docker = '/usr/local/bin/docker'
+    
+     REGISTRY_USER = credentials('registryUser')
     REGISTRY_PASSWORD = credentials('registryPassword')
     CURRENT_BUILD_NUMBER = "${currentBuild.number}"
     GIT_COMMIT_SHORT = sh(returnStdout: true, script: "git rev-parse --short ${GIT_COMMIT}").trim()
